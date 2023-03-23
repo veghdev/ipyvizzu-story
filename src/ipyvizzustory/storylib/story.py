@@ -1,6 +1,6 @@
 """A module for working with presentation stories."""
 
-from typing import Optional, Union, List, Any
+from typing import Optional, Union, List
 from os import PathLike
 import json
 import uuid
@@ -32,7 +32,7 @@ class Step(dict):
         Args:
             *animations: List of `ipyvizzu.Data`, `ipyvizzu.Config` and `ipyvizzu.Style` objects.
                 A `Step` can contain each of the above once.
-            **anim_options: Animation options such as duration.
+            **anim_options (optional): Animation options such as duration.
 
         Raises:
             ValueError: If `animations` are not set.
@@ -74,7 +74,7 @@ class Slide(list):
         Slide constructor.
 
         Args:
-            step: The first step can also be added to the slide in the constructor.
+            step (optional): The first step can also be added to the slide in the constructor.
         """
 
         super().__init__()
@@ -105,8 +105,8 @@ class StorySize:
         StorySize constructor.
 
         Args:
-            width: The width of a presentation story.
-            height: The height of a presentation story.
+            width (optional): The width of a presentation story.
+            height (optional): The height of a presentation story.
         """
         self._width = width
         self._height = height
@@ -119,57 +119,26 @@ class StorySize:
 
     @property
     def width(self) -> Optional[str]:
-        """
-        A property for storing the width of a presentation story.
-
-        Returns:
-            The width of a presentation story.
-        """
+        """A property for returning the width of a presentation story."""
 
         return self._width
 
     @property
     def height(self) -> Optional[str]:
-        """
-        A property for storing the height of a presentation story.
-
-        Returns:
-            The height of a presentation story.
-        """
+        """A property for returning the height of a presentation story."""
 
         return self._height
 
     @property
     def style(self) -> str:
         """
-        A property for storing the style of a presentation story.
+        A property for returning the cssText width and height of a presentation story.
 
         Note:
             If `width` and `height` are not set it returns an empty string.
-
-        Returns:
-            The cssText width and height of a presentation story.
         """
 
         return self._style
-
-    @staticmethod
-    def is_pixel(value: Any) -> bool:
-        """
-        A static method for checking the type of the given value.
-
-        Args:
-            value: The value to check.
-
-        Returns:
-            True if the value is pixel, False otherwise.
-        """
-
-        value_is_pixel = False
-        if isinstance(value, str):
-            if value.endswith("px"):
-                value_is_pixel = value[:-2].isnumeric()
-        return value_is_pixel
 
 
 class Story(dict):
@@ -183,7 +152,7 @@ class Story(dict):
             data: Data set for the whole presentation story.
                 After initialization `data` can not be modified,
                 but it can be filtered.
-            style: Style settings for the presentation story.
+            style (optional): Style settings for the presentation story.
                 `style` can be changed at each presentation step.
 
         Raises:
@@ -255,14 +224,11 @@ class Story(dict):
         A method for setting width/height settings.
 
         Args:
-            width: The width of the presentation story.
-            height: The height of the presentation story.
+            width (optional): The width of the presentation story.
+            height (optional): The height of the presentation story.
         """
 
         self._size = StorySize(width=width, height=height)
-
-    def _repr_html_(self) -> str:
-        return self.to_html()
 
     def to_html(self) -> str:
         """

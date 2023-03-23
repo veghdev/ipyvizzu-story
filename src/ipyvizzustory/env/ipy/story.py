@@ -20,11 +20,14 @@ class Story(StoryLib):
             data: Data set for the whole presentation story.
                 After initialization `data` can not be modified,
                 but it can be filtered.
-            style: Style settings for the presentation story.
+            style (optional): Style settings for the presentation story.
                 `style` can be changed at each presentation step.
         """
 
         super().__init__(data=data, style=style)
+
+    def _repr_html_(self) -> str:
+        return self.to_html()
 
     def play(self) -> None:
         """A method for displaying the assembled html code in Jupyter/IPython environment."""

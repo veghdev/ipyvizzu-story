@@ -1,1 +1,0 @@
-"""Panel environment dependent modules."""
