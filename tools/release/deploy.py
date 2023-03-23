@@ -32,9 +32,7 @@ class Deploy:
             [
                 "mike",
                 "deploy",
-                "-u",
                 version,
-                "latest",
                 "-F",
                 "tools/mkdocs/mkdocs.yml",
             ],
