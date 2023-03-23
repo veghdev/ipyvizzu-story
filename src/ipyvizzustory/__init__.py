@@ -61,6 +61,5 @@ Available types:
 
 * [Jupyter/IPython Story][ipyvizzustory.env.ipy.story.Story]
 * [Streamlit Story][ipyvizzustory.env.st.story.Story]
-* [Panel Story][ipyvizzustory.env.pn.story.Story]
 * [Python Story][ipyvizzustory.env.py.story.Story]
 """

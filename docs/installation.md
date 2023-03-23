@@ -26,7 +26,7 @@ and this is how to upgrade it.
 pip install -U ipyvizzu-story
 ```
 
-You can use `ipyvizzu-story` in `Jupyter/IPython`, `Streamlit`, `Panel` or
+You can use `ipyvizzu-story` in `Jupyter/IPython`, `Streamlit` or
 `Python` (see [Environments chapter](environments/index.md) for more details).
 
 ### Jupyter/IPython
@@ -52,15 +52,6 @@ with the following command.
 
 ```sh
 pip install ipyvizzu-story[streamlit]
-```
-
-### Panel
-
-If you want to install `Panel` as a dependency, install `ipyvizzu-story` with
-the following command.
-
-```sh
-pip install ipyvizzu-story[panel]
 ```
 
 ## conda / mamba

@@ -31,7 +31,6 @@ setup(
     extras_require={
         "jupyter": ["IPython"],
         "streamlit": ["streamlit"],
-        "panel": ["panel"],
     },
     url="https://github.com/vizzuhq/ipyvizzu-story",
     project_urls={

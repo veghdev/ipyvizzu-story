@@ -138,7 +138,6 @@ nav:
           - environments/platform/index.md
           - environments/platform/streamlit.md
           - environments/platform/flask.md
-          - environments/platform/panel.md
           - Mercury/mljar: environments/platform/mercury.md
           - Voilà: environments/platform/voila.md
       - BI tools:
