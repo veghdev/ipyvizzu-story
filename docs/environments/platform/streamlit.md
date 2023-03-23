@@ -91,11 +91,7 @@ story.add_slide(slide2)
 story.set_size(width=800, height=480)
 
 
-# you can export the Story into a html file
-
-story.export_to_html(filename="mystory.html")
-
-# or you can get the html Story as a string
+# you can get the html Story as a string
 
 html = story.to_html()
 print(html)

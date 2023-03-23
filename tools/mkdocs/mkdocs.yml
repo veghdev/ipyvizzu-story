@@ -98,7 +98,6 @@ plugins:
       scripts:
         - pages/gen_pages.py
         - pages/gen_notebooks.py
-        - reference/gen_reference.py
   - coverage:
       page_name: coverage
       html_report_dir: tests/coverage
@@ -121,7 +120,6 @@ nav:
       - Building blocks: tutorial/building_blocks.md
       - tutorial/export.md
   - Examples: examples/
-  - Code reference: reference/ipyvizzustory/
   - Environments:
       - environments/index.md
       - Notebooks:

@@ -6,13 +6,11 @@
   <p align="center">
     <a href="https://ipyvizzu-story.vizzuhq.com/latest/">Documentation</a>
     · <a href="https://ipyvizzu-story.vizzuhq.com/latest/examples/">Examples</a>
-    · <a href="https://ipyvizzu-story.vizzuhq.com/latest/reference/ipyvizzustory/">Code reference</a>
     · <a href="https://github.com/vizzuhq/ipyvizzu-story">Repository</a>
   </p>
 </p>
 
 [![PyPI version](https://badge.fury.io/py/ipyvizzu-story.svg)](https://badge.fury.io/py/ipyvizzu-story)
-[![Conda Version](https://img.shields.io/conda/vn/conda-forge/ipyvizzu-story.svg)](https://anaconda.org/conda-forge/ipyvizzu-story)
 [![CI-CD](https://github.com/vizzuhq/ipyvizzu-story/actions/workflows/cicd.yml/badge.svg?branch=main)](https://github.com/vizzuhq/ipyvizzu-story/actions/workflows/cicd.yml)
 
 # ipyvizzu-story
