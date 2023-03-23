@@ -43,31 +43,3 @@ but you can also set them manually with the `set_size` method.
 ```python
 story.set_size(width="100%", height="400px")
 ```
-
-## Story properties
-
-### vizzu
-
-`ipyvizzu-story` requires and downloads the
-[Vizzu](https://github.com/vizzuhq/vizzu-lib) `JavaScript`/`C++`
-[library](https://www.jsdelivr.com/package/npm/vizzu) from `jsDelivr CDN`, but
-you can also use a different or self-hosted version of it.
-
-```python
-story.vizzu = "<url>/vizzu.min.js"
-```
-
-!!! info
-    The default value of `vizzu` property is `None`, because the default version
-    of `Vizzu` is stored in the `vizzu-story` package.
-
-### vizzu_story
-
-`ipyvizzu-story` requires and downloads the
-[Vizzu-Story](https://github.com/vizzuhq/vizzu-ext-js-story) `JavaScript`
-[package](https://www.jsdelivr.com/package/npm/vizzu-story) from `jsDelivr CDN`,
-but you can also use a different or self-hosted version of it.
-
-```python
-story.vizzu_story = "<url>/vizzu-story.min.js"
-```
