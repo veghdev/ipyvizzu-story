@@ -40,7 +40,7 @@ try:
     if hasattr(st, "runtime"):  # pragma: no cover
         ctx = st.runtime.scriptrunner.get_script_run_ctx()  # type: ignore
     else:  # pragma: no cover
-        ctx = st.scriptrunner.script_run_context.get_script_run_ctx()  # type: ignore  # pylint: disable=no-member
+        ctx = st.scriptrunner.script_run_context.get_script_run_ctx()  # type: ignore
 
     if not ctx:  # pragma: no cover
         raise ImportError("StreamlitStory")
