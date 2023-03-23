@@ -55,10 +55,18 @@ class Reference:
                 mkdocs_gen_files.set_edit_path(full_doc_path, ".." / path)
                 with mkdocs_gen_files.open(full_doc_path, "w") as f_md:
                     f_md.write(f"{package.__doc__}\n")
-                    for item in package.__all__:
-                        f_md.write(f"::: {package.__name__}.{item}\n")
-                        f_md.write("    options:\n")
-                        f_md.write("      show_root_members_full_path: false\n")
+                    f_md.write(f"::: {package.__name__}.get_story\n")
+                    f_md.write("    options:\n")
+                    f_md.write("      show_root_members_full_path: false\n")
+                    f_md.write(f"::: {package.__name__}.Story\n")
+                    f_md.write("    options:\n")
+                    f_md.write("      show_root_members_full_path: false\n")
+                    f_md.write(f"::: {package.__name__}.Slide\n")
+                    f_md.write("    options:\n")
+                    f_md.write("      show_root_members_full_path: false\n")
+                    f_md.write(f"::: {package.__name__}.Step\n")
+                    f_md.write("    options:\n")
+                    f_md.write("      show_root_members_full_path: false\n")
             else:
                 mkdocs_gen_files.set_edit_path(full_doc_path, ".." / path)
                 with mkdocs_gen_files.open(full_doc_path, "w") as f_md:
