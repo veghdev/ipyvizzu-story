@@ -269,27 +269,6 @@ class TestStoryHtml(TestHtml, unittest.TestCase):
 
         return Story(*args, **kwargs)
 
-    def test_export_to_html(self) -> None:
-        """
-        A method for testing Story.export_to_html method.
-
-        Raises:
-            AssertionError: If the story html is not correct.
-        """
-
-        with unittest.mock.patch(
-            "ipyvizzustory.storylib.story.uuid.uuid4", return_value=self
-        ):
-            test_html = self.test_dir + "/.test.test_export_to_html.html"
-            story = self.get_story()
-            story.export_to_html(test_html)
-            with open(test_html, "r", encoding="utf8") as file_desc:
-                test_html_content = file_desc.read()
-            self.assertEqual(
-                test_html_content,
-                self.get_html(),
-            )
-
     def test_to_html(self) -> None:
         """
         A method for testing Story.to_html method.
