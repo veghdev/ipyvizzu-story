@@ -78,7 +78,7 @@ You can enable or disable chart features, such as the `Tooltip` that appears if
 the viewer hovers their mouse over a specific element of the chart.
 
 ```python
-story.set_feature("tooltip", True)
+story.feature("tooltip", True)
 ```
 
 !!! tip
@@ -94,7 +94,7 @@ events.
 ```python
 handler = "alert(JSON.stringify(event.data))"
 
-story.add_event("click", handler)
+story.event("click", handler)
 ```
 
 !!! tip

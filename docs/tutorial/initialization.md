@@ -34,12 +34,3 @@ story = Story(data=data, style=Style({"title": {"fontSize": 50}}))
     and
     [ipyvizzu - Chart layout chapter](https://ipyvizzu.vizzuhq.com/latest/tutorial/chart_layout/)
     for more details on the available styling options.
-
-## Size
-
-`ipyvizzu-story` tries to apply the ideal `width` and `height` for the story,
-but you can also set them manually with the `set_size` method.
-
-```python
-story.set_size(width="100%", height="400px")
-```

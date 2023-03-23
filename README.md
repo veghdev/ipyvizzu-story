@@ -90,16 +90,12 @@ for more details.
 
 - Notebooks
   - [Jupyter Notebook](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/jupyternotebook/)
-  - [Colab](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/colab/)
   - [DataCamp](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/datacamp/)
-  - [Deepnote](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/deepnote/)
   - [JupyterLab](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/jupyterlab/)
   - [JupyterLite](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/jupyterlite/)
   - [Kaggle](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/kaggle/)
   - [Noteable](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/noteable/)
 - App platforms
-  - [Streamlit](https://ipyvizzu-story.vizzuhq.com/latest/environments/platform/streamlit/)
-  - [Flask](https://ipyvizzu-story.vizzuhq.com/latest/environments/platform/flask/)
   - [Mercury/mljar](https://ipyvizzu-story.vizzuhq.com/latest/environments/platform/mercury/)
   - [Voilà](https://ipyvizzu-story.vizzuhq.com/latest/environments/platform/voila/)
 - BI tools

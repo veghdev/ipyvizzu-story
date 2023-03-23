@@ -51,7 +51,7 @@ from ipyvizzustory import Slide, Step
 
 from ipyvizzustory import Story  # or
 
-# from ipyvizzustory.env.ipy.story import Story
+# from ipyvizzustory.ipy_env.story import Story
 
 
 # create data and initialize Story with the created data
@@ -89,11 +89,6 @@ slide2 = Slide(
     )
 )
 story.add_slide(slide2)
-
-
-# you can set the width and height (CSS style)
-
-story.set_size(width="800px", height="480px")
 
 
 # you can get the html Story as a string

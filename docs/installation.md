@@ -26,7 +26,7 @@ and this is how to upgrade it.
 pip install -U ipyvizzu-story
 ```
 
-You can use `ipyvizzu-story` in `Jupyter/IPython`, `Streamlit` or
+You can use `ipyvizzu-story` in `Jupyter/IPython` or
 `Python` (see [Environments chapter](environments/index.md) for more details).
 
 ### Jupyter/IPython
@@ -43,13 +43,4 @@ If you want to install `Jupyter/IPython` as a dependency, install
 
 ```sh
 pip install ipyvizzu-story[jupyter]
-```
-
-### Streamlit
-
-If you want to install `Streamlit` as a dependency, install `ipyvizzu-story`
-with the following command.
-
-```sh
-pip install ipyvizzu-story[streamlit]
 ```
