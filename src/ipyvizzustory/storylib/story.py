@@ -30,21 +30,13 @@ class Step(dict):
             Do not set `anim_options` argument, it will raise `NotImplementedError` error.
 
         Args:
-            *animations: List of [Data][ipyvizzu.Data],
-                [Config][ipyvizzu.Config] and [Style][ipyvizzu.Style] objects.
+            *animations: List of `ipyvizzu.Data`, `ipyvizzu.Config` and `ipyvizzu.Style` objects.
                 A `Step` can contain each of the above once.
             **anim_options: Animation options such as duration.
 
         Raises:
             ValueError: If `animations` are not set.
             NotImplementedError: If `anim_options` are set.
-
-        Example:
-            Initialize a step with a [Config][ipyvizzu.Config] object:
-
-                step = Step(
-                    Config({"x": "Foo", "y": "Bar"})
-                )
         """
 
         super().__init__()
@@ -83,19 +75,6 @@ class Slide(list):
 
         Args:
             step: The first step can also be added to the slide in the constructor.
-
-        Example:
-            Initialize a slide without step:
-
-                slide = Slide()
-
-            Initialize a slide with a step:
-
-                slide = Slide(
-                    Step(
-                        Config({"x": "Foo", "y": "Bar"})
-                    )
-                )
         """
 
         super().__init__()
@@ -110,23 +89,7 @@ class Slide(list):
             step: The next step of the slide.
 
         Raises:
-            TypeError: If the type of the `step` is not
-                [Step][ipyvizzustory.storylib.story.Step].
-
-        Example:
-            Add steps to a slide:
-
-                slide = Slide()
-                slide.add_step(
-                    Step(
-                        Config({"x": "Foo", "y": "Bar"})
-                    )
-                )
-                slide.add_step(
-                    Step(
-                        Config({"color": "Foo", "x": "Baz", "geometry": "circle"})
-                    )
-                )
+            TypeError: If the type of the `step` is not `Step`.
         """
 
         if not step or type(step) != Step:  # pylint: disable=unidiomatic-typecheck
@@ -152,7 +115,7 @@ class StorySize:
         if any([width is not None, height is not None]):
             width = "" if width is None else f"width: {width};"
             height = "" if height is None else f"height: {height};"
-            self._style = f"vp.style.cssText = '{width}{height}'"
+            self._style = f"vizzuPlayer.style.cssText = '{width}{height}'"
 
     @property
     def width(self) -> Optional[str]:
@@ -199,7 +162,7 @@ class StorySize:
             value: The value to check.
 
         Returns:
-            `True` if the value is pixel, `False` otherwise.
+            True if the value is pixel, False otherwise.
         """
 
         value_is_pixel = False
@@ -226,22 +189,9 @@ class Story(dict):
         Raises:
             TypeError: If the type of the `data` is not `ipyvizzu.Data`.
             TypeError: If the type of the `style` is not `ipyvizzu.Style`.
-
-        Example:
-            Initialize a story with data and without style:
-
-                data = Data()
-                data.add_series("Foo", ["Alice", "Bob", "Ted"])
-                data.add_series("Bar", [15, 32, 12])
-                data.add_series("Baz", [5, 3, 2])
-
-                story = Story(data=data)
         """
 
         super().__init__()
-
-        self._vizzu: Optional[str] = None
-        self._vizzu_story: str = VIZZU_STORY
 
         self._size: StorySize = StorySize()
 
@@ -259,39 +209,6 @@ class Story(dict):
 
         self["slides"] = []
 
-    @property
-    def vizzu(self) -> Optional[str]:
-        """
-        A property for changing `vizzu` url.
-
-        Note:
-            If `None`, vizzu url is set by `vizzu-story`.
-
-        Returns:
-            `Vizzu` url.
-        """
-
-        return self._vizzu
-
-    @vizzu.setter
-    def vizzu(self, url: str) -> None:
-        self._vizzu = url
-
-    @property
-    def vizzu_story(self) -> str:
-        """
-        A property for changing `vizzu-story` url.
-
-        Returns:
-            `Vizzu-story` url.
-        """
-
-        return self._vizzu_story
-
-    @vizzu_story.setter
-    def vizzu_story(self, url: str) -> None:
-        self._vizzu_story = url
-
     def add_slide(self, slide: Slide) -> None:
         """
         A method for adding a slide for the story.
@@ -300,19 +217,7 @@ class Story(dict):
             slide: The next slide of the story.
 
         Raises:
-            TypeError: If the type of the `slide` is not
-                [Slide][ipyvizzustory.storylib.story.Slide].
-
-        Example:
-            Add a slide to the story:
-
-                story.add_slide(
-                    Slide(
-                        Step(
-                            Config({"x": "Foo", "y": "Bar"})
-                        )
-                    )
-                )
+            TypeError: If the type of the `slide` is not `Slide`.
         """
 
         if not slide or type(slide) != Slide:  # pylint: disable=unidiomatic-typecheck
@@ -325,12 +230,7 @@ class Story(dict):
 
         Args:
             name: The name of the feature.
-            enabled: `True` if enabled or `False` if disabled.
-
-        Example:
-            Set a feature of the story, for example enable the tooltip:
-
-                story.set_feature("tooltip", True)
+            enabled: True if enabled or False if disabled.
         """
 
         self._features.append(f"chart.feature('{name}', {json.dumps(enabled)});")
@@ -340,13 +240,8 @@ class Story(dict):
         A method for creating and turning on an event handler.
 
         Args:
-            event: The type of the event.
-            handler: The handler `JavaScript` expression as string.
-
-        Example:
-            Add an event handler to the story:
-
-                story.add_event("click", "alert(JSON.stringify(event.data));")
+            event: The name of the event.
+            handler: The handler JavaScript expression as string.
         """
 
         self._events.append(
@@ -362,11 +257,6 @@ class Story(dict):
         Args:
             width: The width of the presentation story.
             height: The height of the presentation story.
-
-        Example:
-            Change the size of the story:
-
-                story.set_size("100%", "400px")
         """
 
         self._size = StorySize(width=width, height=height)
@@ -376,17 +266,16 @@ class Story(dict):
 
     def to_html(self) -> str:
         """
-        A method for assembling the `HTML` code.
+        A method for assembling the html code.
 
         Returns:
-            The assembled `HTML` code as string.
+            The assembled html code as string.
         """
 
         vizzu_player_data = f"{json.dumps(self, cls=RawJavaScriptEncoder)}"
         return DISPLAY_TEMPLATE.format(
             id=uuid.uuid4().hex[:7],
-            vizzu_attribute=f'vizzu-url="{self._vizzu}"' if self._vizzu else "",
-            vizzu_story=self._vizzu_story,
+            vizzu_story=VIZZU_STORY,
             vizzu_player_data=vizzu_player_data,
             chart_size=self._size.style,
             chart_features=f"\n{DISPLAY_INDENT * 3}".join(self._features),
@@ -395,10 +284,10 @@ class Story(dict):
 
     def export_to_html(self, filename: PathLike) -> None:
         """
-        A method for exporting the story into `HTML` file.
+        A method for exporting the story into html file.
 
         Args:
-            filename: The path of the target `HTML` file.
+            filename: The path of the target html file.
         """
 
         with open(filename, "w", encoding="utf8") as file_desc:

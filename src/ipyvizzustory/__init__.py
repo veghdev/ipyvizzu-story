@@ -57,7 +57,7 @@ def get_story():
             The appropriate `Story` for the environment.
     """  # pylint: disable=line-too-long
 
-    return JupyterStory or StreamlitStory or PythonStory  # type: ignore
+    return JupyterStory or StreamlitStory or PythonStory
 
 
 Story = get_story()
@@ -69,5 +69,3 @@ Available types:
 * [Panel Story][ipyvizzustory.env.pn.story.Story]
 * [Python Story][ipyvizzustory.env.py.story.Story]
 """
-
-__all__ = ["get_story", "Story", "Slide", "Step"]
