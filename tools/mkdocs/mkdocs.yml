@@ -128,7 +128,6 @@ nav:
           - environments/notebook/index.md
           - Jupyter Notebook: environments/notebook/jupyternotebook.md
           - environments/notebook/colab.md
-          - environments/notebook/databricks.md
           - DataCamp: environments/notebook/datacamp.md
           - environments/notebook/deepnote.md
           - JupyterLab: environments/notebook/jupyterlab.md

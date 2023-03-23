@@ -93,7 +93,6 @@ for more details.
 - Notebooks
   - [Jupyter Notebook](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/jupyternotebook/)
   - [Colab](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/colab/)
-  - [Databricks](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/databricks/)
   - [DataCamp](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/datacamp/)
   - [Deepnote](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/deepnote/)
   - [JupyterLab](https://ipyvizzu-story.vizzuhq.com/latest/environments/notebook/jupyterlab/)
