@@ -73,7 +73,7 @@ class TestJupyterStory(TestHtml, unittest.TestCase):
             return_value=self,
         ):
             with unittest.mock.patch(
-                "ipyvizzustory.env.ipy.story.display_html"
+                "ipyvizzustory.ipy_env.story.display_html"
             ) as output:
                 self.get_story().play()
                 self.assertEqual(
@@ -111,23 +111,6 @@ class TestStreamlitStory(TestHtml, unittest.TestCase):
 
         return StreamlitStory(*args, **kwargs)
 
-    @data(
-        {"width": "800", "height": 480},
-        {"width": 800, "height": "480"},
-        {"width": "800", "height": "480"},
-    )
-    def test_set_size_if_width_or_height_is_not_int(self, value: dict) -> None:
-        """
-        A method for testing Story.set_size method if width or height is not int.
-
-        Raises:
-            AssertionError: If ValueError is not occurred.
-        """
-
-        story = self.get_story()
-        with self.assertRaises(ValueError):
-            story.set_size(**value)
-
     def test_play(self) -> None:
         """
         A method for testing Story.play method.
@@ -139,11 +122,10 @@ class TestStreamlitStory(TestHtml, unittest.TestCase):
         with unittest.mock.patch(
             "ipyvizzustory.storylib.story.uuid.uuid4", return_value=self
         ):
-            with unittest.mock.patch("ipyvizzustory.env.st.story.html") as output:
+            with unittest.mock.patch("ipyvizzustory.st_env.story.html") as output:
                 story = self.get_story()
-                story.set_size(width=800, height=480)
                 story.play()
                 self.assertEqual(
                     output.call_args_list[0].args[0],
-                    self.get_html_with_size(),
+                    self.get_html(),
                 )

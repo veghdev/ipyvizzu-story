@@ -15,6 +15,6 @@ from ipyvizzustory.storylib.template import (
 from ipyvizzustory.storylib.animation import DataFilter
 from ipyvizzustory.storylib.story import Story, Slide, Step
 
-from ipyvizzustory.env.py.story import Story as PythonStory
-from ipyvizzustory.env.ipy.story import Story as JupyterStory
-from ipyvizzustory.env.st.story import Story as StreamlitStory
+from ipyvizzustory.py_env.story import Story as PythonStory
+from ipyvizzustory.ipy_env.story import Story as JupyterStory
+from ipyvizzustory.st_env.story import Story as StreamlitStory

@@ -74,24 +74,6 @@ class TestHtml(ABC):
             chart_events="",
         )
 
-    def get_html_with_size(self) -> str:
-        """
-        A method for returning a test story html output with size values.
-
-        Returns:
-            A test html output.
-        """
-
-        return DISPLAY_TEMPLATE.format(
-            id="1234567",
-            vizzu_attribute="",
-            vizzu_story=VIZZU_STORY,
-            vizzu_player_data=self.get_vpd(),
-            chart_size="vizzuPlayer.style.cssText = 'width: 800px;height: 480px;'",
-            chart_features="",
-            chart_events="",
-        )
-
 
 class TestStoryInit(unittest.TestCase):
     """A class for testing Story. __init__ method."""
@@ -285,102 +267,6 @@ class TestStoryHtml(TestHtml, unittest.TestCase):
                 self.get_html(),
             )
 
-    def test_to_html_with_size(self) -> None:
-        """
-        A method for testing Story.to_html method with size.
-
-        Raises:
-            AssertionError: If the story html is not correct.
-        """
-
-        with unittest.mock.patch(
-            "ipyvizzustory.storylib.story.uuid.uuid4", return_value=self
-        ):
-            story = self.get_story()
-            story.set_size(width=None, height=None)
-            self.assertEqual(
-                story.to_html(),
-                DISPLAY_TEMPLATE.format(
-                    id="1234567",
-                    vizzu_attribute="",
-                    vizzu_story=VIZZU_STORY,
-                    vizzu_player_data=self.get_vpd(),
-                    chart_size="",
-                    chart_features="",
-                    chart_events="",
-                ),
-            )
-
-    def test_to_html_with_size_width(self) -> None:
-        """
-        A method for testing Story.to_html method with size/width.
-
-        Raises:
-            AssertionError: If the story html is not correct.
-        """
-
-        with unittest.mock.patch(
-            "ipyvizzustory.storylib.story.uuid.uuid4", return_value=self
-        ):
-            story = self.get_story()
-            story.set_size(width="800px", height=None)
-            self.assertEqual(
-                story.to_html(),
-                DISPLAY_TEMPLATE.format(
-                    id="1234567",
-                    vizzu_attribute="",
-                    vizzu_story=VIZZU_STORY,
-                    vizzu_player_data=self.get_vpd(),
-                    chart_size="vizzuPlayer.style.cssText = 'width: 800px;'",
-                    chart_features="",
-                    chart_events="",
-                ),
-            )
-
-    def test_to_html_with_size_height(self) -> None:
-        """
-        A method for testing Story.to_html method with size/height.
-
-        Raises:
-            AssertionError: If the story html is not correct.
-        """
-
-        with unittest.mock.patch(
-            "ipyvizzustory.storylib.story.uuid.uuid4", return_value=self
-        ):
-            story = self.get_story()
-            story.set_size(width=None, height="480px")
-            self.assertEqual(
-                story.to_html(),
-                DISPLAY_TEMPLATE.format(
-                    id="1234567",
-                    vizzu_attribute="",
-                    vizzu_story=VIZZU_STORY,
-                    vizzu_player_data=self.get_vpd(),
-                    chart_size="vizzuPlayer.style.cssText = 'height: 480px;'",
-                    chart_features="",
-                    chart_events="",
-                ),
-            )
-
-    def test_to_html_with_size_width_and_height(self) -> None:
-        """
-        A method for testing Story.to_html method with size/width and height.
-
-        Raises:
-            AssertionError: If the story html is not correct.
-        """
-
-        with unittest.mock.patch(
-            "ipyvizzustory.storylib.story.uuid.uuid4", return_value=self
-        ):
-            story = self.get_story()
-            story.set_size(width="800px", height="480px")
-            self.assertEqual(
-                story.to_html(),
-                self.get_html_with_size(),
-            )
-
     def test_to_html_with_feature(self) -> None:
         """
         A method for testing Story.to_html method with feature.
@@ -393,8 +279,8 @@ class TestStoryHtml(TestHtml, unittest.TestCase):
             "ipyvizzustory.storylib.story.uuid.uuid4", return_value=self
         ):
             story = self.get_story()
-            story.set_feature("tooltip", True)
-            story.set_feature("tooltip", True)
+            story.feature("tooltip", True)
+            story.feature("tooltip", True)
             self.assertEqual(
                 story.to_html(),
                 DISPLAY_TEMPLATE.format(
@@ -405,7 +291,7 @@ class TestStoryHtml(TestHtml, unittest.TestCase):
                     chart_size="",
                     chart_features=(
                         "chart.feature('tooltip', true);"
-                        + f"\n{DISPLAY_INDENT * 3}"
+                        + f"\n{DISPLAY_INDENT}"
                         + "chart.feature('tooltip', true);"
                     ),
                     chart_events="",
@@ -430,8 +316,8 @@ class TestStoryHtml(TestHtml, unittest.TestCase):
                     event.preventDefault();
                 }
                 """
-            story.add_event("plot-axis-label-draw", handler)
-            story.add_event("plot-axis-label-draw", handler)
+            story.event("plot-axis-label-draw", handler)
+            story.event("plot-axis-label-draw", handler)
             self.assertEqual(
                 story.to_html(),
                 DISPLAY_TEMPLATE.format(
@@ -444,7 +330,7 @@ class TestStoryHtml(TestHtml, unittest.TestCase):
                     chart_events=(
                         "chart.on('plot-axis-label-draw', "
                         + f"event => {{{' '.join(handler.split())}}});"
-                        + f"\n{DISPLAY_INDENT * 3}"
+                        + f"\n{DISPLAY_INDENT}"
                         + "chart.on('plot-axis-label-draw', "
                         + f"event => {{{' '.join(handler.split())}}});"
                     ),
