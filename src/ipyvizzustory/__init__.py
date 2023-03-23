@@ -1,23 +1,4 @@
-"""
-Build, present and share animated data stories in `Jupyter Notebook` and similar environments.
-
-`ipyvizzu-story` package consists of two main parts:
-
-* [Storylib][ipyvizzustory.storylib]: environment independent modules
-* [Env][ipyvizzustory.env]: environment dependent modules
-
-`ipyvizzu-story` package tries to figure out the environment and import the correct type of `Story`,
-however `Story` could be imported with full path.
-
-`ipyvizzu-story` package imports the following objects in `__init__.py`:
-
-
-* `Story` from [Env.py.story][ipyvizzustory.env.py.story] or
-    [Env.ipy.story][ipyvizzustory.env.ipy.story] or
-    [Env.st.story][ipyvizzustory.env.st.story]
-* [Step][ipyvizzustory.storylib.story.Step]
-* [Slide][ipyvizzustory.storylib.story.Slide]
-"""
+"""Python integration of Vizzu-Story."""
 
 
 from .storylib.story import Step, Slide
@@ -44,22 +25,9 @@ except ImportError:  # pragma: no cover
 
 
 def get_story():
-    """
-    A method for returning the appropriate Story for the environment.
-
-    Returns:
-        (Union[ipyvizzustory.env.py.story.Story, ipyvizzustory.env.ipy.story.Story, ipyvizzustory.env.st.story.Story]):
-            The appropriate `Story` for the environment.
-    """  # pylint: disable=line-too-long
+    """A method for returning the appropriate Story for the environment."""
 
     return JupyterStory or StreamlitStory or PythonStory
 
 
 Story = get_story()
-"""
-Available types:
-
-* [Jupyter/IPython Story][ipyvizzustory.env.ipy.story.Story]
-* [Streamlit Story][ipyvizzustory.env.st.story.Story]
-* [Python Story][ipyvizzustory.env.py.story.Story]
-"""
