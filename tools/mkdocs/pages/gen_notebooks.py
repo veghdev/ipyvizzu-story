@@ -30,7 +30,7 @@ class Notebook:
 
     @staticmethod
     def _replace_csv_url(match_obj) -> str:
-        url = f"https://ipyvizzu-story.vizzuhq.com/{Vizzu.get_ipyvizzustory_version()}/"
+        url = f"https://ipyvizzu-story.vizzuhq.com/{Vizzu.get_ipyvizzustory_version()}/examples/"
         before = match_obj.group(1)
         example = match_obj.group(3)
         after = match_obj.group(5)
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", (event) => {{
     for (let i = 0; i < elements.length; i++) {{
       elements[i].innerHTML = elements[i].innerHTML.replace(
         regex,
-        '"https://ipyvizzu-story.vizzuhq.com/{ipyvizzustory_version}/$2$3'
+        '"https://ipyvizzu-story.vizzuhq.com/{ipyvizzustory_version}/examples/$2$3'
       );
     }}
   }}
